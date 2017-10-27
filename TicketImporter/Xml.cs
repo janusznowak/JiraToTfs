@@ -34,7 +34,8 @@ namespace TicketImporter
             new Tuple<string, char>("_lb_", '('),
             new Tuple<string, char>("_rb_", ')'),
             new Tuple<string, char>("_gt_", '>'),
-            new Tuple<string, char>("_lt_", '<')
+            new Tuple<string, char>("_lt_", '<'),
+            new Tuple<string, char>("&#47;", '/')
         };
 
         public static string Escape(string toFormat)

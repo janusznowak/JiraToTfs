@@ -20,6 +20,7 @@
 */
 #endregion
 
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -53,9 +54,16 @@ namespace TicketImporter
             get
             {
                 var priority = "";
-                if (string.IsNullOrWhiteSpace(lookUp) == false)
+                try
                 {
-                    priority = map[lookUp];
+
+                    if (string.IsNullOrWhiteSpace(lookUp) == false) { priority = map[lookUp]; }
+
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"Misssing {ex.Message} {lookUp}");
+                    throw;
                 }
                 return priority;
             }
@@ -79,7 +87,10 @@ namespace TicketImporter
                 {"Major", "2"},
                 {"Medium", "3" },
                 {"Minor", "4"},
-                {"Trivial", "4"}
+                {"Trivial", "4"},
+                //jnno
+                {"High", "1"},
+
             };
             SettingsStore.Save(key, map);
         }

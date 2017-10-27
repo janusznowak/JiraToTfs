@@ -65,7 +65,9 @@ namespace TicketImporter
             var saved = true;
             try
             {
-                var toSave = new XElement(key, formatKeys(source).Select(kv => new XElement(kv.Key, kv.Value)));
+
+
+                var toSave = new XElement(key.Replace("/", "&#47;"), formatKeys(source).Select(kv => new XElement(kv.Key.Replace("/", "&#47;"), kv.Value)));
                 if (toSave.HasElements)
                 {
                     var xmlTree = new XElement("Mappings", toSave);
